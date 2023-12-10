@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+export FORCE_COLOR=1
+
+# Ensure all dependencies are same version
+pnpm syncpack lint
+
+# Lint, Test, Prettier
+pnpm exec lint-staged --concurrent false
